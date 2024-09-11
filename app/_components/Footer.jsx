@@ -8,7 +8,7 @@ function Footer() {
     <span className=' text-red-600 text-md font-semibold mt-2'>Ratnamukund HealthCare Foundation</span>
   
       <p className="mx-auto mt-6 max-w-md text-center leading-relaxed text-gray-500">
-      At our hospital, we believe that exceptional care is more than just treatment—it's a commitment to improving lives through compassion, innovation, and excellence in healthcare.
+      At our hospital, we believe that exceptional care is more than just treatment-its a commitment to improving lives through compassion, innovation, and excellence in healthcare.
       </p>
   
       <ul className="mt-12 flex flex-wrap justify-center gap-6 md:gap-8 lg:gap-12">
