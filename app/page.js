@@ -8,6 +8,7 @@ import GlobalApi from "./_utils/GlobalApi";
 import Contact from "./_components/Contact";
 import Timings from "./_components/Timings";
 import dynamic from 'next/dynamic';
+import Campaign from './_components/campaign'
 
 // Dynamically import MapComponent with server-side rendering disabled
 const MapComponent = dynamic(() => import('./_components/map'), { ssr: false });
@@ -30,6 +31,9 @@ useEffect(()=>{
         <Hero/>
         <CategorySearch/>
         <DoctorList doctorList={doctorList}/>
+      </div>
+      <div className="mt-20">
+        <Campaign/>
       </div>
       <div id="main-container" className="main-container">
       <div id="contact-card" className="card-container">

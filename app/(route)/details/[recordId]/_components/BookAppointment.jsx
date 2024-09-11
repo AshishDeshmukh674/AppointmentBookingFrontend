@@ -162,7 +162,9 @@ function BookAppointment({ doctor }) {
             return;
         }
     
-        const dateStr = date.toLocaleDateString('en-CA');
+        const dateStr = date.toLocaleDateString('en-CA'); // This will be used for internal data
+        const formattedDateStr = date.toLocaleDateString('en-GB'); // Format the date to dd/mm/yyyy for WhatsApp message
+    
         const bookedSlots = bookedSlotsByDate[dateStr] || [];
     
         if (bookedSlots.includes(selectedTimeSlot)) {
@@ -190,7 +192,7 @@ function BookAppointment({ doctor }) {
             const formData = {
                 user_name: `${user.given_name || ''} ${user.family_name || ''}`.trim(),
                 user_phone: phoneNumber,
-                date: dateStr,
+                date: formattedDateStr, // Use the formatted date here
                 time: selectedTimeSlot,
                 doctorName: doctor?.attributes?.Name
             };
@@ -206,11 +208,11 @@ function BookAppointment({ doctor }) {
         } finally {
             setLoading(false);
         }
-    };    
+    };
+    
     
     const sendMessage = async (formData) => {
         const phoneNumbers = [
-            "+919325046223",
             "+918149623527",
             "+919822038877",
             "+919764432460",
