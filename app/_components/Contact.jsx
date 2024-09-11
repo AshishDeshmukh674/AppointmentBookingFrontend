@@ -124,7 +124,7 @@ export default function Contact() {
 
     return (
         <form className="mt-10 space-y-6" ref={form} onSubmit={handleSubmit}>
-            <div className="flex flex-col gap-9">
+            <div id="Contact-us" className="flex flex-col gap-9">
                 <div className="flex flex-col gap-4 sm:flex-row sm:gap-5">
                     <div className="flex-1 border-b-2 border-silver-400 focus-within:border-blue-500">
                         <input

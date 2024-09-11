@@ -30,8 +30,8 @@ function Header() {
           <nav className="hidden md:flex space-x-6 gap-10">
             {[
               { id: 1, name: "Home", path: "/" },
-              { id: 2, name: "About Us", path: "/about" },
-              { id: 3, name: "Contact", path: "/contact" },
+              { id: 2, name: "Explore", path: "#category-search" },
+              { id: 3, name: "Contact", path: "#Contact-us" },
             ].map((item) => (
               <Link
                 href={item.path}

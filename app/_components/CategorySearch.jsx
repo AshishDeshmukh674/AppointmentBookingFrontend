@@ -47,7 +47,7 @@ function CategorySearch() {
   };
 
   return (
-    <div className='flex flex-col items-center px-4 justify-center'>
+    <div id="category-search" className='flex flex-col items-center px-4 justify-center'>
       <h2 className='font-bold text-3xl tracking-wide text-center mb-4'>
         Search <span className='text-primary'>Category</span>
       </h2>
