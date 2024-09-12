@@ -3,7 +3,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-function DoctorList({ doctorList, heading = 'Popular Doctors' }) {
+function DoctorList({ doctorList, heading = 'BOOK APPOINTMENT...' }) {
   return (
     <div className='mb-10 px-8'>
       <h2 className='font-bold text-2xl text-gray-800 mb-6'>
@@ -30,6 +30,12 @@ function DoctorList({ doctorList, heading = 'Popular Doctors' }) {
               </h2>
               <h2 className='font-bold text-lg text-gray-900'>
                 {doctor.attributes?.Name}
+              </h2>
+              <h2 className='text-sm text-gray-600'>
+                {doctor.attributes?.Profession}
+              </h2>
+              <h2 className='text-sm text-gray-600'>
+                {doctor.attributes?.Area_Of_Experience}
               </h2>
               <h2 className='text-sm text-primary'>
                 {doctor.attributes?.Year_of_Experience} Years Experience

@@ -28,7 +28,7 @@ function BookAppointment({ doctor }) {
     const { user } = useKindeBrowserClient() || {};
     const [loading, setLoading] = useState(false);
     const router = useRouter();
-    const [clinicType, setClinicType] = useState('Morning Clinic - Ratnamukund Clinic, Warjhe');
+    const [clinicType, setClinicType] = useState('Morning Clinic - Ratnamukund Clinic, Warje');
     const [successMessage, setSuccessMessage] = useState('');
     const [error, setError] = useState('');
 
@@ -320,9 +320,9 @@ function BookAppointment({ doctor }) {
                                             onChange={(e) => setClinicType(e.target.value)}
                                             className="w-full mt-2 p-2 border rounded-md"
                                         >
-                                            <option value="Morning Clinic - Ratnamukund Clinic, Warjhe">Morning Clinic - Ratnamukund Clinic, Warjhe</option>
-                                            <option value="Evening Clinic - Ratnamukund Clinic, Warjhe">Evening Clinic - Ratnamukund Clinic, Warjhe</option>
-                                            <option value="AfterNoon Clinic - Shashvat Clinic, Pune">AfterNoon Clinic - Shashvat Clinic, Pune</option>
+                                            <option value="Morning Clinic - Ratnamukund Clinic, Warje">Morning Clinic - Ratnamukund Clinic, Warje</option>
+                                            <option value="Evening Clinic - Ratnamukund Clinic, Warje">Evening Clinic - Ratnamukund Clinic, Warje</option>
+                                            <option value="AfterNoon Clinic - Shashvat Clinic, Pune">AfterNoon Clinic - Shashwat Clinic, Pune</option>
                                         </select>
                                     </div>
                                 </div>
