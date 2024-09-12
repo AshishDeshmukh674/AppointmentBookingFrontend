@@ -201,7 +201,7 @@ function BookAppointment({ doctor }) {
             await sendMessage(formData);
     
             setSuccessMessage('Booking Successful! You will be redirected shortly.');
-            setTimeout(() => router.push('/'), 2000);
+            setTimeout(() => router.push('/my-booking'), 2000);
         } catch (error) {
             console.error("Booking failed:", error.response ? error.response.data : error.message);
             setSuccessMessage(`Booking Failed. Error: ${error.response ? error.response.data.message : error.message}`);

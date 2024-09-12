@@ -31,11 +31,11 @@ function DoctorList({ doctorList, heading = 'BOOK APPOINTMENT...' }) {
               <h2 className='font-bold text-lg text-gray-900'>
                 {doctor.attributes?.Name}
               </h2>
-              <h2 className='text-sm text-gray-600'>
+              <h2 className='text-cyan-600 font-bold text-sm'>
                 {doctor.attributes?.Profession}
               </h2>
-              <h2 className='text-sm text-gray-600'>
-                {doctor.attributes?.Area_Of_Experience}
+              <h2 className='text-sm text-red-800'>
+                Area of Experience: {doctor.attributes?.Area_Of_Experience}
               </h2>
               <h2 className='text-sm text-primary'>
                 {doctor.attributes?.Year_of_Experience} Years Experience

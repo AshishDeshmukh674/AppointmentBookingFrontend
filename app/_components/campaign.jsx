@@ -74,7 +74,7 @@ function CampaignSection() {
                 className={`flex-shrink-0 w-full h-full ${currentSlide === i ? "opacity-100" : "opacity-0"}`}
               >
                 <Image
-                  src={campaign.attributes?.Camp_Poster?.data?.attributes?.url || "/default-image.jpg"}
+                  src={campaign.attributes?.Poster?.data?.attributes?.url || "/default-image.jpg"}
                   alt={`Campaign Image ${i + 1}`}
                   layout="fill"
                   objectFit="contain"

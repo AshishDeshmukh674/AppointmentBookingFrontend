@@ -1,31 +1,30 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 
-function Hero() {
+function Hero(doctor) {
   const [showMoreInfo, setShowMoreInfo] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [slideDirection, setSlideDirection] = useState(''); // Added state for slide direction
+  const [slideDirection, setSlideDirection] = useState('');
 
   const slides = [
     {
-      id: 0,
-      image: "/doctors.jpeg",
-      title: "Dr Shreepad Bhat",
-      description: `Dr. Shreepad Bhat is a distinguished consultant physician with a strong academic and clinical background in internal medicine. He earned his MBBS from the prestigious B.J. Medical College in Pune and pursued his MD in Medicine at Sasoon Medical College, Pune. With a deep specialization in coronary artery disease, Dr. Bhat’s research on Young Coronary Artery Disease and its preventive factors has been recognized internationally.`,
-      moreInfo: `Dr. Bhat has served as a Senior Research Associate at the renowned John Hopkins University and has made significant contributions as an Assistant Professor of Medicine at Bharatratna Atalbihari Vajpayee Medical College, Pune. He has also shared his expertise as an Honorary Physician with Pune Municipal Corporation and as a consulting physician at Tata Motors, Pune.
-
-In addition to his clinical practice at Shreevag Clinic, Pune, Dr. Bhat continues to contribute to the academic field as a Visiting Faculty at Tilak Maharashtra Vidyapeeth, Pune. His work has been published in top-tier medical journals, with a notable focus on coronary artery disease.`,
+      id: 3,
+      image: '/doctors.jpeg',
+      title: 'Dr Shreepad Bhat',
+      profession: 'Consultant Physician', // Added profession property
+      description: 'Dr. Shreepad Bhat is a distinguished consultant physician with a strong academic and clinical background in internal medicine. He earned his MBBS from the prestigious B.J. Medical College in Pune and pursued his MD in Medicine at Sasoon Medical College, Pune. With a deep specialization in coronary artery disease, Dr. Bhat’s research on Young Coronary Artery Disease and its preventive factors has been recognized internationally.',
+      moreInfo: 'Dr. Bhat has served as a Senior Research Associate at the renowned John Hopkins University and has made significant contributions as an Assistant Professor of Medicine at Bharatratna Atalbihari Vajpayee Medical College, Pune. He has also shared his expertise as an Honorary Physician with Pune Municipal Corporation and as a consulting physician at Tata Motors, Pune.',
       showMoreInfoButton: true,
     },
     {
-      id: 1,
-      image: "/Shilpa Bhat.jpg",
-      title: "Dr Shilpa Bhat",
-      description: `Dr. Shilpa Bhat is a leading obstetrician and gynecologist with extensive experience in women’s health. She completed her MBBS from Govt. Medical College, Aurangabad, followed by an MD in Obstetrics & Gynaecology from Govt. Medical College, Pune. Her expertise lies in managing Intra Uterine Contraceptive Devices (IUCD) and postpartum care, where she has made significant contributions.`,
-      moreInfo: `Dr. Bhat has previously held the position of Associate Professor in Obstetrics and Gynaecology at S.K.N. Medical College, Pune. Her dedication to women’s health earned her the Best Family Planning Service Award in Maharashtra in 2013. She has published multiple papers in international journals on IUCD and other critical aspects of gynecological care.
-
-Currently, Dr. Bhat serves as a Consultant Gynecologist at Mamta Clinic, Pune, and continues to educate future healthcare professionals as a Visiting Faculty at Tilak Maharashtra Vidyapeeth, Pune.`,
+      id: 4,
+      image: '/Shilpa Bhat.jpg',
+      title: 'Dr Shilpa Bhat',
+      profession: 'Obstetrician and Gynecologist', // Added profession property
+      description: 'Dr. Shilpa Bhat is a leading obstetrician and gynecologist with extensive experience in women’s health. She completed her MBBS from Govt. Medical College, Aurangabad, followed by an MD in Obstetrics & Gynaecology from Govt. Medical College, Pune. Her expertise lies in managing Intra Uterine Contraceptive Devices (IUCD) and postpartum care, where she has made significant contributions.',
+      moreInfo: 'Dr. Bhat has previously held the position of Associate Professor in Obstetrics and Gynaecology at S.K.N. Medical College, Pune. Her dedication to women’s health earned her the Best Family Planning Service Award in Maharashtra in 2013. She has published multiple papers in international journals on IUCD and other critical aspects of gynecological care.',
       showMoreInfoButton: true,
     },
   ];
@@ -36,12 +35,12 @@ Currently, Dr. Bhat serves as a Consultant Gynecologist at Mamta Clinic, Pune, a
 
   useEffect(() => {
     const slideInterval = setInterval(() => {
-      setSlideDirection('right'); // Set direction for transition
+      setSlideDirection('right');
       setTimeout(() => {
         setCurrentSlide((prevSlide) => (prevSlide + 1) % slides.length);
-        setSlideDirection(''); // Reset direction after transition
-      }, 500); // Adjust to match the CSS transition duration
-    }, 7000); // 7 seconds
+        setSlideDirection('');
+      }, 500);
+    }, 7000);
 
     return () => clearInterval(slideInterval);
   }, [slides.length]);
@@ -68,9 +67,13 @@ Currently, Dr. Bhat serves as a Consultant Gynecologist at Mamta Clinic, Pune, a
             </div>
 
             <div className="lg:py-24">
-              <h2 className="text-3xl font-bold sm:text-4xl text-primary">
+              <h2 className="text-4xl font-bold sm:text-4xl text-primary">
                 {currentData.title}
               </h2>
+
+              <div className="mt-4 py-1 px-3 bg-slate-200 text-black font-medium rounded-full inline-block text-sm">
+                {currentData.profession}
+              </div>
 
               <p className="mt-4 text-gray-600">
                 {currentData.description}
@@ -78,10 +81,26 @@ Currently, Dr. Bhat serves as a Consultant Gynecologist at Mamta Clinic, Pune, a
 
               {currentData.showMoreInfoButton && (
                 <>
-                  <Button className="mt-8 bg-gradient-to-b from-blue-400 to-blue-800" onClick={handleMoreInfoClick}>
-                    More Info
-                  </Button>
+                  <div className="mt-8 flex flex-col sm:flex-row sm:items-center sm:space-x-4">
+                    {/* More Info Button */}
+                    <Button
+                      className='py-2 px-4 bg-primary text-white text-sm rounded-full sm:w-auto w-full text-center transition-colors duration-300 hover:bg-blue-700'
+                      onClick={handleMoreInfoClick}
+                    >
+                      More Info
+                    </Button>
 
+                    {/* Book Now Button */}
+                    <Link href={'/details/' + currentData.id}>
+                      <Button
+                        className='mt-4 sm:mt-0 py-2 px-4 bg-primary text-white text-sm rounded-full w-full sm:w-auto text-center transition-colors duration-300 hover:bg-blue-700'
+                      >
+                        Book Now
+                      </Button>
+                    </Link>
+                  </div>
+
+                  {/* More Info Content */}
                   <div
                     className={`mt-4 p-4 bg-gray-100 rounded-lg overflow-hidden transition-all duration-500 ease-in-out ${
                       showMoreInfo ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
@@ -102,3 +121,6 @@ Currently, Dr. Bhat serves as a Consultant Gynecologist at Mamta Clinic, Pune, a
 }
 
 export default Hero;
+
+
+
