@@ -1,6 +1,4 @@
 User-agent: *
-Disallow: /private/
-Disallow: /api/
 Allow: /
 
-Sitemap: https://www.drbhatpune.com/api/sitemap
+Sitemap: https://drbhatpune.com/app/site/sitemap.xml
