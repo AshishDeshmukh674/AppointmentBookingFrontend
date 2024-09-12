@@ -1,18 +1,19 @@
-import { handleAuth, handleCallback } from '@kinde-oss/kinde-auth-nextjs/server';
+import { handleAuth } from '@kinde-oss/kinde-auth-nextjs/server';
 
-// Define the GET method to handle authentication
 export const GET = async (req, res) => {
   try {
-    // Handle the authentication callback
+    // Handle authentication and redirect after login
     await handleAuth(req, res, {
       afterCallback: (req, res, session) => {
-        // Here you can redirect the user to the correct route after successful login
-        res.redirect('/');  // Change this to any page you want
+        console.log("User successfully authenticated:", session);
+        // Redirect to a specific route after successful login
+        res.redirect('/appointments');  // Redirect to your desired page
       },
     });
   } catch (error) {
-    console.error('Authentication error:', error);
-    // Handle the error, for example by redirecting to an error page
-    res.redirect('/error');
+    console.error('Error during authentication:', error);
+
+    // Return a proper error response to help with debugging
+    res.status(500).json({ error: 'Authentication failed. Please try again.' });
   }
 };
