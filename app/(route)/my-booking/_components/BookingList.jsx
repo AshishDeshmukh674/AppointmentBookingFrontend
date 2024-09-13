@@ -1,5 +1,5 @@
-"use client"
-import React from 'react';
+"use client";
+import React, { useState } from 'react';
 import Image from 'next/image'; // For handling images in Next.js
 import { MapPin, Calendar, Clock } from 'lucide-react'; // For icons
 import { Button } from "@/components/ui/button"; // Assuming you have a custom Button component
@@ -8,6 +8,7 @@ import GlobalApi from '@/app/_utils/GlobalApi';
 import { useRouter } from 'next/navigation'; // Import useRouter
 
 function BookingList({ bookingList, expired }) {
+    const [localBookingList, setLocalBookingList] = useState(bookingList); // Initialize local state
     const router = useRouter(); // Initialize useRouter
 
     const handleCancelAppointment = async (id) => {
@@ -15,7 +16,10 @@ function BookingList({ bookingList, expired }) {
             // Call the cancel appointment function from GlobalApi
             await GlobalApi.cancelAppointment(id);
 
-            // Refresh the current page to update the booking list
+            // Update local bookingList by removing the canceled appointment
+            setLocalBookingList(prevList => prevList.filter(item => item.id !== id));
+
+            // Optionally refresh the page to ensure the latest data is loaded
             router.refresh();
         } catch (error) {
             console.error('Failed to cancel the appointment:', error);
@@ -24,7 +28,7 @@ function BookingList({ bookingList, expired }) {
 
     return (
         <div>
-            {bookingList && bookingList.map((item, index) => (
+            {localBookingList && localBookingList.map((item, index) => (
                 <div key={index} className='flex gap-4 items-center border p-5 m-3 rounded-lg'>
                     
                     <div className='flex flex-col gap-2 w-full'>

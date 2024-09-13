@@ -43,8 +43,7 @@ function Hero() {
         'Best Family Planning Service Award - Govt. of Maharashtra 2013-14',
         'Pioneer work in postpartum intrauterine contraceptive device',
         'Published paper in Elsevier International Journal on postpartum intrauterine contraceptive device'], // Ensure this is an array
-      moreInfo: ['Dr. Bhat has previously held the position of Associate Professor in Obstetrics and Gynaecology at S.K.N. Medical College, Pune. Her dedication to women’s health earned her the Best Family Planning Service Award in Maharashtra in 2013. She has published multiple papers in international journals on IUCD and other critical aspects of gynecological care.',
-      ],
+      moreInfo: ['Dr. Bhat has previously held the position of Associate Professor in Obstetrics and Gynaecology at S.K.N. Medical College, Pune. Her dedication to women’s health earned her the Best Family Planning Service Award in Maharashtra in 2013. She has published multiple papers in international journals on IUCD and other critical aspects of gynecological care.'],
       showMoreInfoButton: true,
     },
   ];
@@ -102,10 +101,10 @@ function Hero() {
                 {currentData.profession}
               </div>
 
-              <ul className="mt-4 list-disc list-inside text-gray-600">
+              <ul className="mt-4 list-disc pl-5 text-gray-600">
                 {(Array.isArray(currentData.description) && currentData.description.length) ? (
                   currentData.description.map((item, index) => (
-                    <li key={index}>{item}</li>
+                    <li key={index} className="mb-1">{item}</li>  // Add margin between items
                   ))
                 ) : (
                   <li>No description available.</li>
