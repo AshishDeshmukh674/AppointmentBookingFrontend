@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 
-function Hero(doctor) {
+function Hero() {
   const [showMoreInfo, setShowMoreInfo] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [slideDirection, setSlideDirection] = useState('');
@@ -12,19 +12,39 @@ function Hero(doctor) {
     {
       id: 3,
       image: '/doctors.jpeg',
-      title: 'Dr Shreepad Bhat',
-      profession: 'Consultant Physician', // Added profession property
-      description: 'Dr. Shreepad Bhat is a distinguished consultant physician with a strong academic and clinical background in internal medicine. He earned his MBBS from the prestigious B.J. Medical College in Pune and pursued his MD in Medicine at Sasoon Medical College, Pune. With a deep specialization in coronary artery disease, Dr. Bhat’s research on Young Coronary Artery Disease and its preventive factors has been recognized internationally.',
-      moreInfo: 'Dr. Bhat has served as a Senior Research Associate at the renowned John Hopkins University and has made significant contributions as an Assistant Professor of Medicine at Bharatratna Atalbihari Vajpayee Medical College, Pune. He has also shared his expertise as an Honorary Physician with Pune Municipal Corporation and as a consulting physician at Tata Motors, Pune.',
+      title: ['Dr. Shreepad Bhat',
+        'MBBS M. D . Medicine (B.J. Medical College Pune)'
+      ],
+      profession: 'Consultant Physician',
+      description: [
+        '20+ years of professional experience in diabetes care and internal medicine',
+        'Senior Professor of Medicine at Bharat Ratna Atal Bihari Vajpayee Medical College, Pune',
+        'Postgraduate Teacher MUHS, Nasik',
+        'Consultant Physician at Shashwat Hospital Karve Road',
+        'Honorary Physician Pune Municipal Corporation',
+        'Panel Consultant Tata Motors',
+        'Visiting Faculty Tilak Maharashtra Vidyapeeth'
+      ],
+      moreInfo: 'Dr. Shreepad Bhat is a distinguished consultant physician with a strong academic and clinical background in internal medicine. He earned his MBBS from the prestigious B.J. Medical College in Pune and pursued his MD in Medicine at Sasoon Medical College, Pune. With a deep specialization in coronary artery disease, Dr. Bhat’s research on Young Coronary Artery Disease and its preventive factors has been recognized internationally.',
       showMoreInfoButton: true,
     },
     {
       id: 4,
       image: '/Shilpa Bhat.jpg',
-      title: 'Dr Shilpa Bhat',
-      profession: 'Obstetrician and Gynecologist', // Added profession property
-      description: 'Dr. Shilpa Bhat is a leading obstetrician and gynecologist with extensive experience in women’s health. She completed her MBBS from Govt. Medical College, Aurangabad, followed by an MD in Obstetrics & Gynaecology from Govt. Medical College, Pune. Her expertise lies in managing Intra Uterine Contraceptive Devices (IUCD) and postpartum care, where she has made significant contributions.',
-      moreInfo: 'Dr. Bhat has previously held the position of Associate Professor in Obstetrics and Gynaecology at S.K.N. Medical College, Pune. Her dedication to women’s health earned her the Best Family Planning Service Award in Maharashtra in 2013. She has published multiple papers in international journals on IUCD and other critical aspects of gynecological care.',
+      title: ['Dr. Shilpa Bhat',
+        'MBBS, MD (Obstetrics & Gynaecology)'
+      ],
+      profession: 'Obstetrician and Gynecologist',
+      description: ['M.B.B.S - Govt. Medical College, Aurangabad',
+        'Resident Dept. of Obst & Gynac B J Medical, Pune',
+        'M.D. Obst & Gynac - Govt. Medical College, Miraj',
+        'Former Associate Professor S.K.N.M.C, Pune',
+        'Thesis: Study of obstetric referrals to Teaching Institute',
+        'Best Family Planning Service Award - Govt. of Maharashtra 2013-14',
+        'Pioneer work in postpartum intrauterine contraceptive device',
+        'Published paper in Elsevier International Journal on postpartum intrauterine contraceptive device'], // Ensure this is an array
+      moreInfo: ['Dr. Bhat has previously held the position of Associate Professor in Obstetrics and Gynaecology at S.K.N. Medical College, Pune. Her dedication to women’s health earned her the Best Family Planning Service Award in Maharashtra in 2013. She has published multiple papers in international journals on IUCD and other critical aspects of gynecological care.',
+      ],
       showMoreInfoButton: true,
     },
   ];
@@ -40,7 +60,7 @@ function Hero(doctor) {
         setCurrentSlide((prevSlide) => (prevSlide + 1) % slides.length);
         setSlideDirection('');
       }, 500);
-    }, 7000);
+    }, 12000);
 
     return () => clearInterval(slideInterval);
   }, [slides.length]);
@@ -68,16 +88,29 @@ function Hero(doctor) {
 
             <div className="lg:py-24">
               <h2 className="text-4xl font-bold sm:text-4xl text-primary">
-                {currentData.title}
+                {currentData.title.map((line, index) => (
+                  <React.Fragment key={index}>
+                    <span className={index === 0 ? 'text-4xl font-bold' : 'text-xl font-light'}>
+                      {line}
+                    </span>
+                    <br />
+                  </React.Fragment>
+                ))}
               </h2>
 
               <div className="mt-4 py-1 px-3 bg-slate-200 text-black font-medium rounded-full inline-block text-sm">
                 {currentData.profession}
               </div>
 
-              <p className="mt-4 text-gray-600">
-                {currentData.description}
-              </p>
+              <ul className="mt-4 list-disc list-inside text-gray-600">
+                {(Array.isArray(currentData.description) && currentData.description.length) ? (
+                  currentData.description.map((item, index) => (
+                    <li key={index}>{item}</li>
+                  ))
+                ) : (
+                  <li>No description available.</li>
+                )}
+              </ul>
 
               {currentData.showMoreInfoButton && (
                 <>
@@ -95,7 +128,7 @@ function Hero(doctor) {
                       <Button
                         className='mt-4 sm:mt-0 py-2 px-4 bg-primary text-white text-sm rounded-full w-full sm:w-auto text-center transition-colors duration-300 hover:bg-blue-700'
                       >
-                        Book Now
+                        Book Appointment
                       </Button>
                     </Link>
                   </div>
@@ -121,6 +154,3 @@ function Hero(doctor) {
 }
 
 export default Hero;
-
-
-

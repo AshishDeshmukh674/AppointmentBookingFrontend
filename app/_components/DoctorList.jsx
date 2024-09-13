@@ -3,12 +3,12 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-function DoctorList({ doctorList, heading = 'BOOK APPOINTMENT...' }) {
+function DoctorList({ doctorList }) {
   return (
     <div className='mb-10 px-8'>
-      <h2 className='font-bold text-2xl text-gray-800 mb-6'>
-        {heading}
-      </h2>
+      <h2 className="text-2xl ml:3xl md:text-3xl lg:text-4xl font-bold text-left mb-4 lg:mb-6 underline underline-offset-8 decoration-4 decoration-black text-blue-700">
+  Book Appointment...
+</h2>
       {/* Responsive grid: 1 doctor per row on small screens, 2 on medium, 3 on large */}
       <div className='grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7'>
         {doctorList.length > 0 ? doctorList.map((doctor, index) => (

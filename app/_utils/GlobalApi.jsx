@@ -4,6 +4,7 @@ const API_KEY = process.env.NEXT_PUBLIC_STRAPI_API_KEY;
 
 const axiosClient = axios.create({
     baseURL: 'https://appointment-booking-strapi.onrender.com/api',
+    // baseURL:'http://localhost:1337/api',
     headers: {
         'Authorization': `Bearer ${API_KEY}`
     }
@@ -41,6 +42,8 @@ const cancelAppointment = (id) =>
 
 const getCampaigns = () => axiosClient.get('/campaigns?populate=*');
 
+const getGallery = () => axiosClient.get('/galleries?populate=*');
+
 // Exported API methods
 export default {
     getCategory,
@@ -51,5 +54,6 @@ export default {
     getUserBookingList,
     getDoctorAppointmentsByDate,
     cancelAppointment,
-    getCampaigns
+    getCampaigns,
+    getGallery
 };

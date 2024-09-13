@@ -65,7 +65,9 @@ function CampaignSection() {
 
   return (
     campaigns.length > 0 && (
+       
       <div className="campaign-section relative w-full mb-10">
+        <h2 className="text-6xl font-bold text-center mb-6 underline underline-offset-8 decoration-4 decoration-black text-blue-700">Campaign</h2>
         <div className="relative w-[90%] max-w-3xl h-80 overflow-hidden rounded-lg shadow-lg mb-6 mx-auto">
           <div className={`relative w-full h-full flex transition-transform duration-${animationDuration} ease-in-out ${slideDirection}`}>
             {campaigns.map((campaign, i) => (
