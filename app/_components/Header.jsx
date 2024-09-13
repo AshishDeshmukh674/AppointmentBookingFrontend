@@ -30,8 +30,8 @@ function Header() {
           <nav className="hidden md:flex space-x-6 gap-10">
             {[
               { id: 1, name: "Home", path: "/" },
-              { id: 2, name: "Explore", path: "#category-search" },
-              { id: 3, name: "Contact", path: "#Contact-us" },
+              { id: 2, name: "Explore", path: "/#category-search" },
+              { id: 3, name: "Contact", path: "/#Contact-us" },
             ].map((item) => (
               <Link
                 href={item.path}
@@ -58,7 +58,6 @@ function Header() {
               </PopoverTrigger>
               <PopoverContent className="w-48 p-2 bg-white border border-gray-200 shadow-lg rounded-md">
                 <ul className="flex flex-col gap-2">
-                 
                   <li className="cursor-pointer hover:bg-gray-100 p-2 rounded-md text-gray-800 hover:text-primary transition duration-300 ease-in-out">
                     <Link href="/my-booking">My Booking</Link>
                   </li>

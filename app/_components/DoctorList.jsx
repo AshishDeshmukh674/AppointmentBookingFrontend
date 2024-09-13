@@ -6,7 +6,7 @@ import Link from "next/link";
 function DoctorList({ doctorList }) {
   return (
     <div className='mb-10 px-8'>
-      <h2 className="text-2xl ml:3xl md:text-3xl lg:text-4xl font-bold text-left mb-4 lg:mb-6 underline underline-offset-8 decoration-4 decoration-black text-blue-700">
+      <h2 className="text-2xl ml:3xl md:text-3xl lg:text-4xl font-bold text-left mb-4 lg:mb-6 underline underline-offset-4 decoration-4 decoration-black text-blue-700">
   Book Appointment...
 </h2>
       {/* Responsive grid: 1 doctor per row on small screens, 2 on medium, 3 on large */}

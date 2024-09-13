@@ -66,7 +66,7 @@ function Gallery() {
     photos.length > 0 && (
       <div className="gallery-section relative w-full mb-10">
        {/* Adjusting the heading's margin and adding an underline */}
-<h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-4 lg:mb-6 underline underline-offset-8 decoration-4 decoration-black text-blue-700">
+<h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-4 lg:mb-6 underline underline-offset-4 decoration-4 decoration-black text-blue-700">
   Gallery
 </h2>
 
