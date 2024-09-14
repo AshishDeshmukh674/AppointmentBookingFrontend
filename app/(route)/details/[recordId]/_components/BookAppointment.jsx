@@ -75,12 +75,13 @@ function BookAppointment({ doctor }) {
             const { morning, evening, AfterNoon } = getTimeSlotsForDoctor(doctor.id);
         
             const isToday = isSameDay(date, new Date());
+            const isTomorrow = isSameDay(date, new Date(Date.now() + 24 * 60 * 60 * 1000)); // Check if the selected date is tomorrow
             const now = new Date();
             const dayOfWeek = date.getDay(); // Get the day of the week (0 for Sunday, 1 for Monday, ..., 6 for Saturday)
         
             // Check if the selected date is Sunday (0 represents Sunday)
-            if (dayOfWeek === 0) {
-                setTimeSlots([]);  // Clinic is closed, no available slots
+            if (dayOfWeek === 0 || isTomorrow) {  // Block slots for Sunday and tomorrow
+                setTimeSlots([]);  // Clinic is closed or time slots blocked for the next day
                 return;
             }
         
@@ -137,7 +138,7 @@ function BookAppointment({ doctor }) {
             }
         
             setTimeSlots(timeList);
-        };
+        };        
         
     fetchBookedSlotsAndUpdateTimeSlots();
     }, [date, clinicType, doctor.id]);

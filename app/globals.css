@@ -217,7 +217,7 @@ input::placeholder, textarea::placeholder {
 
 /* Header text */
 .header-text {
-  @apply text-2xl lg:text-[2.85rem] flex justify-center font-bold;
+  @apply text-xl lg:text-[2.75rem] flex justify-center font-bold;
   color: #1e40af; /* Blue-800 color */
 }
 

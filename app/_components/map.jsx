@@ -19,8 +19,8 @@ const clinicData = {
           header: "Ratnamukund Healthcare Foundation",
           timings: ["8:00 AM - 9:00 AM", "9:30 AM - 10:30 AM"],
           location: "Sai Syaji Bus Stop, Warje",
-          lat: 18.491150364175127,
-          lng: 73.79292905356807,
+          lat: 18.4909214,
+          lng: 73.7930538,
         },
         {
           header: "Shreeyog Clinic",

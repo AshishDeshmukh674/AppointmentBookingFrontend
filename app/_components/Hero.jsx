@@ -13,7 +13,7 @@ function Hero() {
       id: 3,
       image: '/doctors.jpeg',
       title: ['Dr. Shreepad Bhat',
-        'MBBS M. D . Medicine (B.J. Medical College Pune)'
+        'MBBS MD Medicine(B.J.Medical College Pune)'
       ],
       profession: 'Consultant Physician',
       description: [
